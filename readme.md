@@ -19,5 +19,5 @@ Created an Amazon-like storefront using MySQL.
 ## Built with 
 
 - Node.js
--Inquirer NPM Package (https://www.npmjs.com/package/inquirer)
--MYSQL NPM Package (https://www.npmjs.com/package/mysql)
+- Inquirer NPM Package (https://www.npmjs.com/package/inquirer)
+- MYSQL NPM Package (https://www.npmjs.com/package/mysql)
