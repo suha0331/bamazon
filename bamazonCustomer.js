@@ -14,7 +14,7 @@ connection.connect(function(err) {
     console.log("\n" + "Let's start shopping!" + "\n");
     console.log("------------------------------------------------------------")
     display();
-    questions();
+
 })
 
 //Display items for sale
@@ -27,6 +27,7 @@ function display() {
             console.log("------------------------------------------------------------")
         }
     })
+    questions();
 }
 
 function questions() {
