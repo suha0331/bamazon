@@ -11,17 +11,35 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
     if (err) throw err;
-    console.log("\n" + "Let's start shopping!" + "\n");
+    console.log("\n" + "Welcome to Bamazon!" + "\n");
     console.log("------------------------------------------------------------")
-    display();
-
+    start();
 })
+
+function start() {
+    inquirer
+        .prompt([{
+            name: "start",
+            type: "input",
+            message: "Do you want to go shopping? (Y/N)",
+            validate: function(choice) {
+                if (choice.toUpperCase() === 'Y') {
+                    return display();
+            
+                } else {
+                    console.log("Are you sure?");
+                    start();
+                }
+            }
+
+        }]);
+}
 
 //Display items for sale
 function display() {
     connection.query('SELECT * FROM Products', function(err, res) {
         if (err) throw err;
-
+        console.log("\n ");
         for (var i = 0; i < res.length; i++) {
             console.log(res[i].itemId + ") " + " Product: " + res[i].productName + " | " + "Department: " + res[i].departmentId + " | " + "Price: " + res[i].price);
             console.log("------------------------------------------------------------")
@@ -72,7 +90,7 @@ function questions() {
         });
 }
 
-
+// This doesnt work
 // function updateSql(newQty) {
 //     return connection.query("UPDATE products SET ? WHERE ?", { stockQuantity: newQty });
 //     if (err) throw err;
